@@ -1,0 +1,53 @@
+/*!
+ * breakpoint-sass-mixins v1.0.0 (https://github.com/scherhans/breakpoint-sass-mixins)
+ * Copyright 2020 Sebastian Scherhans <sebastian@scherhans.digital>
+ * Licensed under MIT (https://github.com/scherhans/breakpoint-sass-mixins/blob/master/LICENSE)
+ */
+
+$breakpoints: (
+  small: 0,
+  medium: 480px,
+  large: 1024px,
+  ultra: 1200px,
+) !default;
+
+@mixin breakpoint-up($breakpoint) {
+  @if (is-first-breakpoint($breakpoint) != true) {
+    $width: map-get($breakpoints, $breakpoint);
+    @media (min-width: #{$width}) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($breakpoint) {
+  @if (is-last-breakpoint($breakpoint) != true) {
+    $breakpoint: get-next-breakpoint($breakpoint);
+    $width: map-get($breakpoints, $breakpoint);
+    @media (max-width: calc(#{$width} - 1px)) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@function is-last-breakpoint($name, $breakpoints: $breakpoints) {
+  @return index(map-keys($breakpoints), $name) == length($breakpoints);
+}
+
+@function is-first-breakpoint($name, $breakpoints: $breakpoints) {
+  @return index(map-keys($breakpoints), $name) == 1; // The first element in sass is 1 and not 0 (as expected in other languages)
+}
+
+@function get-next-breakpoint($name, $breakpoints: $breakpoints) {
+  @if (is-last-breakpoint($name) != true) {
+    $breakpoint-list: map-keys($breakpoints);
+    $current-breakpoint-index: index($breakpoint-list, $name);
+    @return nth($breakpoint-list, $current-breakpoint-index + 1);
+  } @else {
+    @return null;
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "breakpoint-sass-mixins",
+  "version": "1.0.0",
+  "description": "Media query breakpoint mixins for Sass",
+  "main": "breakpoints.scss",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sass",
+    "mixins",
+    "responsive",
+    "breakpoint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scherhans/breakpoint-sass-mixins.git"
+  },
+  "author": "Sebastian Scherhans <sebastian@scherhans.digital>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scherhans/breakpoint-sass-mixins/issues"
+  },
+  "homepage": "https://github.com/scherhans/breakpoint-sass-mixins#readme"
+}
