@@ -1,3 +1,6 @@
+
+# DEPRECATED
+
 # breakpoint-sass-mixins
 Media query breakpoint mixins for Sass.
 
